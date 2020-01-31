@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    $_SESSION['error'] = 'Not allowed!';
+    header('Location: login.php');
+}
+?>
 <?php include 'layout/header.php'; ?>
 
 <?php
@@ -20,7 +27,7 @@ try {
         <th>lastname</th>
         <th>firstname</th>
         <th>email</th>
-        <th>banned</th>
+        <th>actions</th>
     </tr>
 
 <?php foreach ($rows as $row): ?>
@@ -37,11 +44,12 @@ try {
         <td>
             <?php 
             if ($row['banned'] == 0) {
-                echo '<a class="btn btn-danger" href="ban.php?id='.$row['id'].'">ban</a>';
+                echo '<a class="btn btn-warning" href="ban.php?id='.$row['id'].'">ban</a>';
             }  else {
                 echo '<a class="btn btn-primary" href="ban.php?id='.$row['id'].'">unban</a>';
             }
             ?>
+            <a class="btn btn-danger" href="delete_user.php?id=<?php echo $row['id']; ?>">delete</a>
         </td>
     </tr>
 <?php endforeach; ?>
