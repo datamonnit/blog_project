@@ -13,7 +13,7 @@ if (isset($_GET['msg'])) {
 ?>
 
 
-    <h1>Register new user</h1>
+    <h1 class="display-3">Register new user</h1>
     <?php if (isset($msg)): ?>
         <p><?php echo $msg; ?></p>
     <?php endif; ?>

@@ -4,7 +4,9 @@ session_start();
 // Check if user comes from register form
 if (!isset($_POST['save_btn']) && $_POST['save_btn'] != 'Register') {
         $msg = "Did not come from correct form!";
-        header("Location: error.php?msg=$msg");
+        // header("Location: error.php?msg=$msg");
+        $_SESSION['error'] = $msg;
+        header("Location: error.php");
         die();
     }
 
