@@ -12,10 +12,6 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="show_users.php">Show users</a>
-      </li>
-
-      <li class="nav-item">
         <a href="show_topics.php" class="nav-link">Show topics</a>      
       </li>
 
@@ -27,6 +23,10 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="register.php">Register</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="show_users.php">Show users</a>
       </li>
       
   <?php endif; ?>

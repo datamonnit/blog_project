@@ -10,4 +10,10 @@ if (!isset($_SESSION['user_id'])) {
 
 <h1 class="display-3">DaBlog</h1>
 
+
+
+
+
+
+
 <?php include 'layout/footer.php'; ?>

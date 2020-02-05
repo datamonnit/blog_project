@@ -3,15 +3,16 @@ session_start();
 
 include 'layout/header.php'; 
 
+// Get vars from session, if they are set
 $firstname = isset($_SESSION['firstname']) ? $_SESSION['firstname'] : "";
-$lastname = isset($_SESSION['larstname']) ? $_SESSION['lastname'] : "";
+$lastname = isset($_SESSION['lastname']) ? $_SESSION['lastname'] : "";
 $email = isset($_SESSION['email']) ? $_SESSION['email'] : "";
 
+// Show possible errormessages
 if (isset($_GET['msg'])) {
     $msg = urldecode($_GET['msg']);
 }
 ?>
-
 
     <h1 class="display-3">Register new user</h1>
     <?php if (isset($msg)): ?>
@@ -37,6 +38,10 @@ if (isset($_GET['msg'])) {
         <div class="form-group">
             <label for="passwd2">Password verify</label>
             <input class="form-control" type="password" name="passwd2" id="passwd2">
+        </div>
+        <div class="form-group">
+            <label for="passwd2">Password hint</label>
+            <input class="form-control" type="text" name="password_hint" id="password_hint">
         </div>
         
         <input class="btn btn-primary" type="submit" name="save_btn" value="Register">

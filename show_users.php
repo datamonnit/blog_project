@@ -1,9 +1,9 @@
 <?php
 session_start();
-if (!isset($_SESSION['user_id'])) {
-    $_SESSION['error'] = 'Not allowed!';
-    header('Location: login.php');
-}
+// if (!isset($_SESSION['user_id'])) {
+//     $_SESSION['error'] = 'Not allowed!';
+//     header('Location: login.php');
+// }
 ?>
 <?php include 'layout/header.php'; ?>
 
@@ -12,7 +12,7 @@ if (!isset($_SESSION['user_id'])) {
 require_once 'pdo_connect.php';
 
 try {
-    $stmt = $conn->prepare("SELECT id, firstname, lastname, email, banned FROM users");
+    $stmt = $conn->prepare("SELECT id, firstname, lastname, email, banned, password_hint FROM users");
     $stmt->execute();
 
     // set the resulting array to associative
@@ -20,13 +20,14 @@ try {
     $rows = $stmt->fetchAll();
 ?>
 
-<h1>All users</h1>
+<h1 class="display-3">All users</h1>
 
 <table class="table">
     <tr>
         <th>lastname</th>
         <th>firstname</th>
         <th>email</th>
+        <th>password hint</th>
         <th>actions</th>
     </tr>
 
@@ -40,6 +41,9 @@ try {
         </td>
         <td>
             <?php echo $row['email']; ?>
+        </td>
+        <td>
+            <?php echo $row['password_hint']; ?>
         </td>
         <td>
             <?php 

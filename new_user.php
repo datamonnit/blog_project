@@ -4,7 +4,6 @@ session_start();
 // Check if user comes from register form
 if (!isset($_POST['save_btn']) && $_POST['save_btn'] != 'Register') {
         $msg = "Did not come from correct form!";
-        // header("Location: error.php?msg=$msg");
         $_SESSION['error'] = $msg;
         header("Location: error.php");
         die();
@@ -16,6 +15,7 @@ $lastname = $_POST['lastname'];
 $email = $_POST['email'];
 $passwd1 = $_POST['passwd1'];
 $passwd2 = $_POST['passwd2'];
+$password_hint = $_POST['password_hint'];
 
 // Create sessiondata
 $_SESSION = $_POST;
@@ -35,17 +35,19 @@ require_once 'pdo_connect.php';
 
 try {
     // Prepare sql and bind parameters
-    $stmt = $conn->prepare("INSERT INTO users (firstname, lastname, email, passwd)
-                            VALUES (:firstname, :lastname, :email, :passwd)");
+    $stmt = $conn->prepare("INSERT INTO users (firstname, lastname, email, passwd, password_hint)
+                            VALUES (:firstname, :lastname, :email, :passwd, :password_hint)");
     $stmt->bindParam(':firstname', $firstname);
     $stmt->bindParam(':lastname', $lastname);
     $stmt->bindParam(':email', $email);
     $stmt->bindParam(':passwd', $passwd_hash);
+    $stmt->bindParam(':password_hint', $password_hint);
    
     $stmt->execute();
 
-    echo "New user created successfully";
-    }
+    echo "New user created successfully";    
+    
+}
 catch(PDOException $e)
     {
     echo "Error: " . $e->getMessage();
