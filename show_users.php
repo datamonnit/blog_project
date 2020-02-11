@@ -54,6 +54,9 @@ try {
             }
             ?>
             <a class="btn btn-danger" href="delete_user.php?id=<?php echo $row['id']; ?>">delete</a>
+
+            <a class="btn btn-info" href="edit_user.php?id=<?php echo $row['id']; ?>">edit</a>
+
         </td>
     </tr>
 <?php endforeach; ?>
