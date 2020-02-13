@@ -8,7 +8,7 @@ This script will show login form and process login
 session_start();
 
 // Process login -form
-if (isset($_POST['btn_login'])) {
+if ( filter_has_var(INPUT_POST, 'btn_login') ) {
 
     $errors = [];
 
