@@ -1,10 +1,18 @@
 <?php
 session_start();
 
+// Nollataan info- ja error -sessiomuuttujat
+if (isset($_SESSION['info'])) {
+    unset($_SESSION['info']);
+} 
+if (isset($_SESSION['errors'])) {
+    unset($_SESSION['errors']);
+} 
+
 // Check if user comes from register form
 if (!isset($_POST['save_btn']) && $_POST['save_btn'] != 'Register') {
         $msg = "Did not come from correct form!";
-        $_SESSION['error'] = $msg;
+        $_SESSION['errors'][] = $msg;
         header("Location: error.php");
         die();
     }
@@ -45,7 +53,9 @@ try {
    
     $stmt->execute();
 
-    echo "New user created successfully";    
+    
+    $_SESSION['info'][] = "New user created successfully";    
+    header("Location: login.php");
     
 }
 catch(PDOException $e)
@@ -53,12 +63,3 @@ catch(PDOException $e)
     echo "Error: " . $e->getMessage();
     }
 $conn = null;
-
-
-
-
-// if (password_verify($password1 . '2', $pwd_hash)) {
-//     echo 'Password is correct!';
-// } else {
-//     echo 'Password is incorrect!';
-// }

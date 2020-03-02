@@ -79,6 +79,15 @@ if ( filter_has_var(INPUT_POST, 'btn_login') ) {
     
     unset($_SESSION['errors']);
 
+    // Show possible info
+    if (isset($_SESSION['info'])):
+        foreach ($_SESSION['info'] as $info): ?>
+        <div class="alert alert-info"><?php echo $info; ?></div>
+        <?php endforeach;
+    endif; 
+
+    unset($_SESSION['info']);
+
     ?>
 
     <form class="form-inline" action="login.php" method="POST">

@@ -1,13 +1,14 @@
 <?php
 session_start();
 
-if(isset($_SESSION['error'])) {
-    $msg = $_SESSION['error'];
-} else if (isset($_GET['msg'])) {
-    $msg = urldecode($_GET['msg']);
-} else {
-    $msg = 'General error! Sorry!';
-}
+// Show possible errors
+if (isset($_SESSION['errors'])):
+    foreach ($_SESSION['errors'] as $error): ?>
+        <div class="alert alert-danger"><?php echo $error; ?></div>
+    <?php endforeach;
+endif; 
+
+unset($_SESSION['errors']);
 
 ?>
 <h1>Error</h1>
