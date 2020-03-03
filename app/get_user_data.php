@@ -19,7 +19,7 @@ if (filter_has_var(INPUT_GET, 'id')){
     die();
 }
 
-require_once 'pdo_connect.php';
+require_once '../db_config/pdo_connect.php';
 
 try {
     $stmt = $conn->prepare("SELECT id, firstname, lastname, email, banned, password_hint 

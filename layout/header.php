@@ -1,5 +1,5 @@
 <?php 
-include_once 'config.php';
+include_once 'db_config/config.php';
 ?>
 <!DOCTYPE html>
 <html lang="fi">

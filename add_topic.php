@@ -13,7 +13,7 @@ if (!isset($_POST['save_btn']) && $_POST['save_btn'] != 'Register') {
 $topic_name = trim($_POST['topic_name']);
 $topic_description = trim($_POST['topic_description']);
 
-require_once 'pdo_connect.php';
+require_once 'db_config/pdo_connect.php';
 
 try {
     // Prepare sql and bind parameters

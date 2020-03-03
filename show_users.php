@@ -9,7 +9,7 @@ session_start();
 
 <?php
 
-require_once 'pdo_connect.php';
+require_once 'db_config/pdo_connect.php';
 
 try {
     $stmt = $conn->prepare("SELECT id, firstname, lastname, email, banned, password_hint FROM users");
@@ -48,12 +48,12 @@ try {
         <td>
             <?php 
             if ($row['banned'] == 0) {
-                echo '<a class="btn btn-warning" href="ban.php?id='.$row['id'].'">ban</a>';
+                echo '<a class="btn btn-warning" href="app/ban.php?id='.$row['id'].'">ban</a>';
             }  else {
-                echo '<a class="btn btn-primary" href="ban.php?id='.$row['id'].'">unban</a>';
+                echo '<a class="btn btn-primary" href="app/ban.php?id='.$row['id'].'">unban</a>';
             }
             ?>
-            <a class="btn btn-danger" href="delete_user.php?id=<?php echo $row['id']; ?>">delete</a>
+            <a class="btn btn-danger" href="app/delete_user.php?id=<?php echo $row['id']; ?>">delete</a>
 
             <a class="btn btn-info" href="edit_user.php?id=<?php echo $row['id']; ?>">edit</a>
 

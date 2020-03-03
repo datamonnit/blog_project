@@ -61,7 +61,7 @@ function getUserData(id){
             document.getElementById('password_hint').value = userData['password_hint'];
         }
     };
-    xmlhttp.open("GET", "get_user_data.php?id=" + id, true);
+    xmlhttp.open("GET", "app/get_user_data.php?id=" + id, true);
     xmlhttp.send();
 }
 

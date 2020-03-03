@@ -28,7 +28,7 @@ if ( filter_has_var(INPUT_POST, 'btn_login') ) {
 
     }
 
-    include 'pdo_connect.php';
+    include 'db_config/pdo_connect.php';
     
     $email = $_POST['email'];
 

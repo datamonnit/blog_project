@@ -12,7 +12,7 @@ if (!isset($_GET['target']) && isset($_GET['id'])) {
 $table = $_GET['target'];
 $id = $_GET['id'];
 
-require_once 'pdo_connect.php';
+require_once '../db_config/pdo_connect.php';
 
 try {
     // Prepare sql and bind parameters

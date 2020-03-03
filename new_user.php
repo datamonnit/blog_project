@@ -39,7 +39,7 @@ if ($passwd1 != $passwd2) {
 // Create passwd-hash
 $passwd_hash = password_hash($_POST['passwd1'], PASSWORD_DEFAULT);
 
-require_once 'pdo_connect.php';
+require_once 'db_config/pdo_connect.php';
 
 try {
     // Prepare sql and bind parameters

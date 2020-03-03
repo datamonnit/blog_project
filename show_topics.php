@@ -10,7 +10,7 @@ if (!isset($_SESSION['user_id'])) {
 
 include 'layout/header.php'; 
 
-require_once 'pdo_connect.php';
+require_once 'db_config/pdo_connect.php';
 
 try {
     $stmt = $conn->prepare("SELECT id, name, description, likes FROM categories");
@@ -25,7 +25,7 @@ try {
     </div>
     <div class="row">
         <?php foreach ($rows as $row): ?>
-            <div class="col-sm">
+            <div class="col-sm-6">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">
@@ -85,7 +85,7 @@ function like(target, id){
             
         }
     };
-    xmlhttp.open("GET", "like.php?target=" + target + "&id=" + id, true);
+    xmlhttp.open("GET", "app/like.php?target=" + target + "&id=" + id, true);
     xmlhttp.send();
 }
 </script>
